@@ -1,12 +1,12 @@
 <?php
 
-namespace Laravel\Dusk\Concerns;
+namespace DuskScraper\Concerns;
 
 use Closure;
 use Exception;
 use Throwable;
 use ReflectionFunction;
-use Laravel\Dusk\Browser;
+use DuskScraper\Browser;
 use Illuminate\Support\Collection;
 
 trait ProvidesBrowser
@@ -26,7 +26,7 @@ trait ProvidesBrowser
     protected static $afterClassCallbacks = [];
 
     /**
-     * Tear down the Dusk test case class.
+     * Tear down the DuskScraper test case class.
      *
      * @afterClass
      * @return void
@@ -55,7 +55,7 @@ trait ProvidesBrowser
      * Create a new browser instance.
      *
      * @param  \Closure  $callback
-     * @return \Laravel\Dusk\Browser|void
+     * @return \DuskScraper\Browser|void
      * @throws \Exception
      * @throws \Throwable
      */
@@ -106,7 +106,7 @@ trait ProvidesBrowser
      * Create a new Browser instance.
      *
      * @param  \Facebook\WebDriver\Remote\RemoteWebDriver  $driver
-     * @return \Laravel\Dusk\Browser
+     * @return \DuskScraper\Browser
      */
     protected function newBrowser($driver)
     {

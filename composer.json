@@ -1,12 +1,16 @@
 {
-    "name": "laravel/dusk",
-    "description": "Laravel Dusk provides simple end-to-end testing and browser automation.",
-    "keywords": ["laravel", "testing", "webdriver"],
+    "name": "clemblanco/dusk-scraper",
+    "description": "Laravel Dusk Scraper is Laravel Dusk for scrapping only.",
+    "keywords": ["laravel", "scraper", "crawler", "webdriver"],
     "license": "MIT",
     "authors": [
         {
             "name": "Taylor Otwell",
             "email": "taylor@laravel.com"
+        },
+        {
+            "name": "Clément Blanco",
+            "email": "mail@clem.io"
         }
     ],
     "require": {
@@ -28,12 +32,12 @@
     },
     "autoload": {
         "psr-4": {
-            "Laravel\\Dusk\\": "src/"
+            "DuskScraper\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Laravel\\Dusk\\Tests\\": "tests/"
+            "DuskScraper\\Tests\\": "tests/"
         }
     },
     "extra": {
@@ -42,7 +46,7 @@
         },
         "laravel": {
             "providers": [
-                "Laravel\\Dusk\\DuskServiceProvider"
+                "DuskScraper\\DuskScraperServiceProvider"
             ]
         }
     },

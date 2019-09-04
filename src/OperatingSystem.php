@@ -1,6 +1,6 @@
 <?php
 
-namespace Laravel\Dusk;
+namespace DuskScraper;
 
 use Illuminate\Support\Str;
 

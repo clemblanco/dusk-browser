@@ -1,6 +1,6 @@
 <?php
 
-namespace Laravel\Dusk\Concerns;
+namespace DuskScraper\Concerns;
 
 use Closure;
 use Exception;
@@ -154,40 +154,6 @@ trait WaitsForElements
         return $this->waitUsing($seconds, 100, function () use ($script) {
             return $this->driver->executeScript($script);
         }, $message);
-    }
-
-    /**
-     * Wait until the Vue component's attribute at the given key has the given value.
-     *
-     * @param  string  $key
-     * @param  string  $value
-     * @param  string|null  $componentSelector
-     * @return $this
-     */
-    public function waitUntilVue($key, $value, $componentSelector = null, $seconds = null)
-    {
-        $this->waitUsing($seconds, 100, function () use ($key, $value, $componentSelector) {
-            return $value == $this->vueAttribute($componentSelector, $key);
-        });
-
-        return $this;
-    }
-
-    /**
-     * Wait until the Vue component's attribute at the given key does not have the given value.
-     *
-     * @param  string  $key
-     * @param  string  $value
-     * @param  string|null  $componentSelector
-     * @return $this
-     */
-    public function waitUntilVueIsNot($key, $value, $componentSelector = null, $seconds = null)
-    {
-        $this->waitUsing($seconds, 100, function () use ($key, $value, $componentSelector) {
-            return $value != $this->vueAttribute($componentSelector, $key);
-        });
-
-        return $this;
     }
 
     /**

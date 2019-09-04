@@ -1,6 +1,6 @@
 <?php
 
-namespace Laravel\Dusk\Chrome;
+namespace DuskScraper\Chrome;
 
 trait SupportsChrome
 {

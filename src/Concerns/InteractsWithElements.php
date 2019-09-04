@@ -1,6 +1,6 @@
 <?php
 
-namespace Laravel\Dusk\Concerns;
+namespace DuskScraper\Concerns;
 
 use Illuminate\Support\Str;
 use Facebook\WebDriver\WebDriverBy;

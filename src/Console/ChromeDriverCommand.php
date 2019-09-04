@@ -1,10 +1,10 @@
 <?php
 
-namespace Laravel\Dusk\Console;
+namespace DuskScraper\Console;
 
 use ZipArchive;
 use Illuminate\Console\Command;
-use Laravel\Dusk\OperatingSystem;
+use DuskScraper\OperatingSystem;
 
 /**
  * @copyright Originally created by Jonas Staudenmeir: https://github.com/staudenmeir/dusk-updater
@@ -16,7 +16,7 @@ class ChromeDriverCommand extends Command
      *
      * @var string
      */
-    protected $signature = 'dusk:chrome-driver {version?}
+    protected $signature = 'scraper:chrome-driver {version?}
                     {--all : Install a ChromeDriver binary for every OS}
                     {--proxy= : The proxy to download the binary through (example: "tcp://127.0.0.1:9000")}
                     {--ssl-no-verify : Bypass SSL certificate verification when installing through a proxy}';

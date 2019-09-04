@@ -1,6 +1,6 @@
 <?php
 
-namespace Laravel\Dusk;
+namespace DuskScraper;
 
 use Exception;
 use Illuminate\Support\Str;
@@ -57,19 +57,6 @@ class ElementResolver
     {
         $this->driver = $driver;
         $this->prefix = trim($prefix);
-    }
-
-    /**
-     * Set the page elements the resolver should use as shortcuts.
-     *
-     * @param  array  $elements
-     * @return $this
-     */
-    public function pageElements(array $elements)
-    {
-        $this->elements = $elements;
-
-        return $this;
     }
 
     /**
