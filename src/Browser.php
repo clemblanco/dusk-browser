@@ -10,6 +10,7 @@ use Facebook\WebDriver\WebDriverPoint;
 use Illuminate\Support\Traits\Macroable;
 use Facebook\WebDriver\WebDriverDimension;
 use Facebook\WebDriver\Remote\WebDriverBrowserType;
+use Exception;
 
 class Browser
 {
@@ -21,13 +22,6 @@ class Browser
         Macroable {
             __call as macroCall;
         }
-
-    /**
-     * The base URL for all URLs.
-     *
-     * @var string
-     */
-    public static $baseUrl;
 
     /**
      * The directory that will contain any screenshots.
@@ -91,33 +85,20 @@ class Browser
     /**
      * Browse to the given URL.
      *
-     * @param  string  $url
+     * @param string $url
+     *
      * @return $this
+     * @throws Exception
      */
     public function visit($url)
     {
-        // If the URL does not start with http or https, then we will prepend the base
-        // URL onto the URL and navigate to the URL. This will actually navigate to
-        // the URL in the browser. Then we will be ready to make assertions, etc.
         if (! Str::startsWith($url, ['http://', 'https://'])) {
-            $url = static::$baseUrl.'/'.ltrim($url, '/');
+            throw new Exception("URL should start with http:// or https://");
         }
 
         $this->driver->navigate()->to($url);
 
         return $this;
-    }
-
-    /**
-     * Browse to the given route.
-     *
-     * @param  string  $route
-     * @param  array  $parameters
-     * @return $this
-     */
-    public function visitRoute($route, $parameters = [])
-    {
-        return $this->visit(route($route, $parameters));
     }
 
     /**

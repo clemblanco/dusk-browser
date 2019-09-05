@@ -1,10 +1,10 @@
 <?php
 
-namespace Laravel\Dusk\Tests;
+namespace DuskScraper\Tests;
 
 use stdClass;
 use Mockery as m;
-use Laravel\Dusk\Browser;
+use DuskScraper\Browser;
 use PHPUnit\Framework\TestCase;
 use Facebook\WebDriver\Exception\TimeOutException;
 
@@ -73,15 +73,6 @@ class WaitsForElementsTest extends TestCase
         $browser = new Browser($driver);
 
         $browser->waitForLocation('/home');
-    }
-
-    public function test_can_wait_for_route()
-    {
-        $driver = m::mock(stdClass::class);
-        $driver->shouldReceive('executeScript')->with("return window.location.pathname == '/home/';")->andReturnTrue();
-        $browser = new Browser($driver);
-
-        $browser->waitForRoute('home');
     }
 
     public function test_can_wait_for_text()

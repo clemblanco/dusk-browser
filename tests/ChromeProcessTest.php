@@ -1,10 +1,10 @@
 <?php
 
-namespace Laravel\Dusk\Tests;
+namespace DuskScraper\Tests;
 
 use RuntimeException;
 use PHPUnit\Framework\TestCase;
-use Laravel\Dusk\Chrome\ChromeProcess;
+use DuskScraper\Chrome\ChromeProcess;
 use Symfony\Component\Process\Process;
 
 class ChromeProcessTest extends TestCase
