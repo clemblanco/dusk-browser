@@ -19,36 +19,21 @@ trait ProvidesBrowser
     protected static $browsers = [];
 
     /**
-     * The callbacks that should be run on class tear down.
+     * The callbacks that should be run after browsing.
      *
      * @var array
      */
-    protected static $afterClassCallbacks = [];
+    protected static $afterBrowseCallbacks = [];
 
     /**
-     * Tear down the DuskScraper test case class.
-     *
-     * @afterClass
-     * @return void
-     */
-    public static function tearDownDuskClass()
-    {
-        static::closeAll();
-
-        foreach (static::$afterClassCallbacks as $callback) {
-            $callback();
-        }
-    }
-
-    /**
-     * Register an "after class" tear down callback.
+     * Register an "after browse" tear down callback.
      *
      * @param  \Closure  $callback
      * @return void
      */
-    public static function afterClass(Closure $callback)
+    public static function afterBrowse(Closure $callback)
     {
-        static::$afterClassCallbacks[] = $callback;
+        static::$afterBrowseCallbacks[] = $callback;
     }
 
     /**
@@ -76,7 +61,7 @@ trait ProvidesBrowser
         } finally {
             $this->storeConsoleLogsFor($browsers);
 
-            static::$browsers = $this->closeAllButPrimary($browsers);
+            static::$browsers = $this->closeAll();
         }
     }
 
@@ -153,19 +138,6 @@ trait ProvidesBrowser
 
             $browser->storeConsoleLog($name.'-'.$key);
         });
-    }
-
-    /**
-     * Close all of the browsers except the primary (first) one.
-     *
-     * @param  \Illuminate\Support\Collection  $browsers
-     * @return \Illuminate\Support\Collection
-     */
-    protected function closeAllButPrimary($browsers)
-    {
-        $browsers->slice(1)->each->quit();
-
-        return $browsers->take(1);
     }
 
     /**

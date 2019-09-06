@@ -32,7 +32,7 @@ trait SupportsChrome
 
         static::$chromeProcess->start();
 
-        static::afterClass(function () {
+        static::afterBrowse(function () {
             static::stopChromeDriver();
         });
     }

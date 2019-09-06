@@ -47,7 +47,10 @@
         "laravel": {
             "providers": [
                 "DuskScraper\\DuskScraperServiceProvider"
-            ]
+            ],
+            "aliases": {
+                "DuskScraper": "DuskScraper\\Facade"
+            }
         }
     },
     "config": {

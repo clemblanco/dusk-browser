@@ -24,6 +24,10 @@ class DuskScraperServiceProvider extends ServiceProvider
      */
     public function register()
     {
+        $this->app->singleton(DuskScraper::class, function () {
+            return new DuskScraper;
+        });
+
         if ($this->app->runningInConsole()) {
             $this->commands([
                 Console\InstallCommand::class,
