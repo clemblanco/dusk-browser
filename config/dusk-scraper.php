@@ -16,4 +16,6 @@ return [
 
     'remote_web_driver' => \DuskScraper\ChromeRemoteWebDriver::class,
 
+    'remote_web_driver_url' => 'http://localhost:9515',
+
 ];

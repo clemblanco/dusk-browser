@@ -15,7 +15,7 @@ class ChromeRemoteWebDriver implements RemoteWebDriverContract
      *
      * @return RemoteWebDriver
      */
-    public function __invoke(): RemoteWebDriver
+    public function __invoke()
     {
         $options = (new ChromeOptions)->addArguments([
             '--disable-gpu',
@@ -24,7 +24,7 @@ class ChromeRemoteWebDriver implements RemoteWebDriverContract
         ]);
 
         return RemoteWebDriver::create(
-            'http://localhost:9515', DesiredCapabilities::chrome()->setCapability(
+            config('dusk-scraper.remote_web_driver_url'), DesiredCapabilities::chrome()->setCapability(
                 ChromeOptions::CAPABILITY, $options
             )
         );

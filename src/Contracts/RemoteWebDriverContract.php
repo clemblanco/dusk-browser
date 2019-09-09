@@ -9,5 +9,5 @@ interface RemoteWebDriverContract
     /**
      * @return RemoteWebDriver
      */
-    public function __invoke(): RemoteWebDriver;
+    public function __invoke();
 }

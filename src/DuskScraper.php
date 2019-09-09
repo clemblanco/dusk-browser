@@ -4,7 +4,6 @@ namespace DuskScraper;
 
 use DuskScraper\Chrome\SupportsChrome;
 use DuskScraper\Concerns\ProvidesBrowser;
-use Facebook\WebDriver\Remote\WebDriverBrowserType;
 
 class DuskScraper
 {
@@ -17,7 +16,11 @@ class DuskScraper
      */
     public function __construct()
     {
-        if ($this->driver()->getCapabilities()->getBrowserName() === WebDriverBrowserType::CHROME) {
+        Browser::$storeScreenshotsAt = storage_path('app/dusk-scraper/screenshots');
+
+        Browser::$storeConsoleLogAt = storage_path('app/dusk-scraper/console');
+
+        if (config('dusk-scraper.remote_web_driver_url') === 'http://localhost:9515') {
             static::startChromeDriver();
         }
     }
@@ -43,8 +46,10 @@ class DuskScraper
      */
     protected function driver()
     {
-        $remoteWebDriver = config('dusk-scraper.remote_web_driver');
+        $remoteWebDriverClass = config('dusk-scraper.remote_web_driver');
 
-        return (new $remoteWebDriver);
+        $remoteWebDriver = new $remoteWebDriverClass;
+
+        return $remoteWebDriver();
     }
 }

@@ -46,7 +46,7 @@
         },
         "laravel": {
             "providers": [
-                "DuskScraper\\DuskScraperServiceProvider"
+                "DuskBrowser\\ServiceProvider"
             ],
             "aliases": {
                 "DuskScraper": "DuskScraper\\Facades\\DuskScraper"

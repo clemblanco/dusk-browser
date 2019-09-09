@@ -29,11 +29,11 @@ class InstallCommand extends Command
      */
     public function handle()
     {
-        if (! is_dir(storage_path('app/Scraper/screenshots'))) {
+        if (! is_dir(storage_path('app/dusk-scraper/screenshots'))) {
             $this->createScreenshotsDirectory();
         }
 
-        if (! is_dir(storage_path('app/Scraper/console'))) {
+        if (! is_dir(storage_path('app/dusk-scraper/console'))) {
             $this->createConsoleDirectory();
         }
 
@@ -59,9 +59,9 @@ class InstallCommand extends Command
      */
     protected function createScreenshotsDirectory()
     {
-        mkdir(storage_path('app/Scraper/screenshots'), 0755, true);
+        mkdir(storage_path('app/dusk-scraper/screenshots'), 0755, true);
 
-        file_put_contents(storage_path('app/Scraper/screenshots/.gitignore'), '*
+        file_put_contents(storage_path('app/dusk-scraper/screenshots/.gitignore'), '*
 !.gitignore
 ');
     }
@@ -73,9 +73,9 @@ class InstallCommand extends Command
      */
     protected function createConsoleDirectory()
     {
-        mkdir(storage_path('app/Scraper/console'), 0755, true);
+        mkdir(storage_path('app/dusk-scraper/console'), 0755, true);
 
-        file_put_contents(storage_path('app/Scraper/console/.gitignore'), '*
+        file_put_contents(storage_path('app/dusk-scraper/console/.gitignore'), '*
 !.gitignore
 ');
     }
