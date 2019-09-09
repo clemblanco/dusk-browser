@@ -5,10 +5,14 @@ namespace DuskScraper;
 use Facebook\WebDriver\Chrome\ChromeOptions;
 use Facebook\WebDriver\Remote\RemoteWebDriver;
 use Facebook\WebDriver\Remote\DesiredCapabilities;
+use DuskScraper\Contracts\RemoteWebDriverContract;
 
-class ChromeRemoteWebDriver implements DuskScraperRemoteWebDriverContract
+class ChromeRemoteWebDriver implements RemoteWebDriverContract
 {
     /**
+     * Instantiate the default Remote Web Driver for Google Chrome browser
+     * and ChromeDriver browser webdriver.
+     *
      * @return RemoteWebDriver
      */
     public function __invoke(): RemoteWebDriver

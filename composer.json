@@ -49,7 +49,7 @@
                 "DuskScraper\\DuskScraperServiceProvider"
             ],
             "aliases": {
-                "DuskScraper": "DuskScraper\\Facade"
+                "DuskScraper": "DuskScraper\\Facades\\DuskScraper"
             }
         }
     },

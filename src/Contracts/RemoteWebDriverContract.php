@@ -1,10 +1,10 @@
 <?php
 
-namespace DuskScraper;
+namespace DuskScraper\Contracts;
 
 use Facebook\WebDriver\Remote\RemoteWebDriver;
 
-interface DuskScraperRemoteWebDriverContract
+interface RemoteWebDriverContract
 {
     /**
      * @return RemoteWebDriver

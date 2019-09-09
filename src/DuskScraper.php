@@ -11,7 +11,9 @@ class DuskScraper
     use ProvidesBrowser, SupportsChrome;
 
     /**
-     * DuskScraper constructor.
+     * DuskScraper constructor. Only called once as we're using a singleton.
+     *
+     * @return void
      */
     public function __construct()
     {
@@ -21,7 +23,9 @@ class DuskScraper
     }
 
     /**
-     * DuskScraper destructor.
+     * DuskScraper destructor. Called whenever the application instance gets killed.
+     *
+     * @return void
      */
     public function __destruct()
     {

@@ -1,6 +1,6 @@
 <?php
 
-namespace DuskScraper;
+namespace DuskScraper\Facades;
 
 /**
  * @method static void browse(\Closure $callback)
@@ -8,7 +8,7 @@ namespace DuskScraper;
  *
  * @see \DuskScraper\DuskScraper
  */
-class Facade extends \Illuminate\Support\Facades\Facade
+class DuskScraper extends \Illuminate\Support\Facades\Facade
 {
     /**
      * {@inheritDoc}
