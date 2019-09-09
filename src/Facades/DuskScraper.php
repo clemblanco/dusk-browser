@@ -15,6 +15,6 @@ class DuskScraper extends \Illuminate\Support\Facades\Facade
      */
     protected static function getFacadeAccessor()
     {
-        return DuskScraper::class;
+        return \DuskScraper\DuskScraper::class;
     }
 }
