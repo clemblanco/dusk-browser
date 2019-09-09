@@ -1,10 +1,10 @@
 <?php
 
-namespace DuskScraper\Tests;
+namespace DuskBrowser\Tests;
 
 use stdClass;
 use Mockery as m;
-use DuskScraper\Browser;
+use DuskBrowser\Browser;
 use PHPUnit\Framework\TestCase;
 use Facebook\WebDriver\Remote\WebDriverBrowserType;
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace DuskScraper\Contracts;
+namespace DuskBrowser\Contracts;
 
 use Facebook\WebDriver\Remote\RemoteWebDriver;
 

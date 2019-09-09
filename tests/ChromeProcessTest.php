@@ -1,10 +1,10 @@
 <?php
 
-namespace DuskScraper\Tests;
+namespace DuskBrowser\Tests;
 
 use RuntimeException;
 use PHPUnit\Framework\TestCase;
-use DuskScraper\Chrome\ChromeProcess;
+use DuskBrowser\Chrome\ChromeProcess;
 use Symfony\Component\Process\Process;
 
 class ChromeProcessTest extends TestCase

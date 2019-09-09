@@ -1,13 +1,13 @@
 <?php
 
-namespace DuskScraper\Tests;
+namespace DuskBrowser\Tests;
 
 use stdClass;
 use Mockery as m;
 use ReflectionClass;
 use InvalidArgumentException;
 use PHPUnit\Framework\TestCase;
-use DuskScraper\ElementResolver;
+use DuskBrowser\ElementResolver;
 
 class ElementResolverTest extends TestCase
 {

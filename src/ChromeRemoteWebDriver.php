@@ -1,11 +1,11 @@
 <?php
 
-namespace DuskScraper;
+namespace DuskBrowser;
 
 use Facebook\WebDriver\Chrome\ChromeOptions;
 use Facebook\WebDriver\Remote\RemoteWebDriver;
 use Facebook\WebDriver\Remote\DesiredCapabilities;
-use DuskScraper\Contracts\RemoteWebDriverContract;
+use DuskBrowser\Contracts\RemoteWebDriverContract;
 
 class ChromeRemoteWebDriver implements RemoteWebDriverContract
 {
@@ -24,7 +24,7 @@ class ChromeRemoteWebDriver implements RemoteWebDriverContract
         ]);
 
         return RemoteWebDriver::create(
-            config('dusk-scraper.remote_web_driver_url'), DesiredCapabilities::chrome()->setCapability(
+            config('dusk-browser.remote_web_driver_url'), DesiredCapabilities::chrome()->setCapability(
                 ChromeOptions::CAPABILITY, $options
             )
         );

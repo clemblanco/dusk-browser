@@ -1,6 +1,6 @@
 <?php
 
-namespace DuskScraper;
+namespace DuskBrowser;
 
 use Exception;
 use Illuminate\Support\Str;

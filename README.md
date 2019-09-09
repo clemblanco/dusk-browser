@@ -23,7 +23,7 @@ DuskBrowser::browse(function ($browser) {
 
 ## Installation 
 
-```composer require clemblanco/dusk-browser```
+```composer require dusk-browser/dusk-browser```
 
 Laravel Dusk Browser comes with two commands identical to Laravel Dusk: `dusk-browser:install` and `dusk-browser:chrome-driver`.
 
@@ -56,7 +56,7 @@ However, you are still free to use any other browser/driver combination by overr
 
 To do so, you will need to publish the config file of the package using `php artisan vendor:publish --provider="DuskBrowser\ServiceProvider"` and specify your own `remote_web_driver` class name.
 
-Feel free to copy and paste the default class `\DuskScraper\ChromeRemoteWebDriver` and simply modify the `__invoke()` function to your needs. For a Selenium driver using a phantomjs browser you might see something like:
+Feel free to copy and paste the default class `\DuskBrowser\ChromeRemoteWebDriver` and simply modify the `__invoke()` function to your needs. For a Selenium driver using a phantomjs browser you might see something like:
 
 ```php
 /**
@@ -67,7 +67,7 @@ Feel free to copy and paste the default class `\DuskScraper\ChromeRemoteWebDrive
 public function __invoke()
 {
     return RemoteWebDriver::create(
-        config('dusk-scraper.remote_web_driver_url'), DesiredCapabilities::phantomjs()
+        config('dusk-browser.remote_web_driver_url'), DesiredCapabilities::phantomjs()
     );
 }
 ```

@@ -1,11 +1,11 @@
 <?php
 
-namespace DuskScraper\Tests;
+namespace DuskBrowser\Tests;
 
 use stdClass;
 use Mockery as m;
 use PHPUnit\Framework\TestCase;
-use DuskScraper\Concerns\ProvidesBrowser;
+use DuskBrowser\Concerns\ProvidesBrowser;
 
 class ProvidesBrowserTest extends TestCase
 {
@@ -18,7 +18,7 @@ class ProvidesBrowserTest extends TestCase
     {
         $browser = m::mock(stdClass::class);
         $browser->shouldReceive('screenshot')->with(
-            'failure-DuskScraper_Tests_ProvidesBrowserTest_test_capture_failures_for-0'
+            'failure-DuskBrowser_Tests_ProvidesBrowserTest_test_capture_failures_for-0'
         );
         $browsers = collect([$browser]);
 
@@ -32,7 +32,7 @@ class ProvidesBrowserTest extends TestCase
     {
         $browser = m::mock(stdClass::class);
         $browser->shouldReceive('storeConsoleLog')->with(
-            'DuskScraper_Tests_ProvidesBrowserTest_test_store_console_logs_for-0'
+            'DuskBrowser_Tests_ProvidesBrowserTest_test_store_console_logs_for-0'
         );
         $browsers = collect([$browser]);
 

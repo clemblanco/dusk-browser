@@ -1,6 +1,6 @@
 <?php
 
-namespace DuskScraper\Chrome;
+namespace DuskBrowser\Chrome;
 
 trait SupportsChrome
 {

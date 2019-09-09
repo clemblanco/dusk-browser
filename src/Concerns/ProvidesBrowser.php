@@ -1,12 +1,12 @@
 <?php
 
-namespace DuskScraper\Concerns;
+namespace DuskBrowser\Concerns;
 
 use Closure;
 use Exception;
 use Throwable;
 use ReflectionFunction;
-use DuskScraper\Browser;
+use DuskBrowser\Browser;
 use Illuminate\Support\Collection;
 
 trait ProvidesBrowser
@@ -40,7 +40,7 @@ trait ProvidesBrowser
      * Create a new browser instance.
      *
      * @param  \Closure  $callback
-     * @return \DuskScraper\Browser|void
+     * @return \DuskBrowser\Browser|void
      * @throws \Exception
      * @throws \Throwable
      */
@@ -91,7 +91,7 @@ trait ProvidesBrowser
      * Create a new Browser instance.
      *
      * @param  \Facebook\WebDriver\Remote\RemoteWebDriver  $driver
-     * @return \DuskScraper\Browser
+     * @return \DuskBrowser\Browser
      */
     protected function newBrowser($driver)
     {

@@ -1,6 +1,6 @@
 <?php
 
-namespace DuskScraper\Console;
+namespace DuskBrowser\Console;
 
 use Illuminate\Console\Command;
 
@@ -11,7 +11,7 @@ class InstallCommand extends Command
      *
      * @var string
      */
-    protected $signature = 'scraper:install
+    protected $signature = 'dusk-browser:install
                 {--proxy= : The proxy to download the binary through (example: "tcp://127.0.0.1:9000")}
                 {--ssl-no-verify : Bypass SSL certificate verification when installing through a proxy}';
 
@@ -29,11 +29,11 @@ class InstallCommand extends Command
      */
     public function handle()
     {
-        if (! is_dir(storage_path('app/dusk-scraper/screenshots'))) {
+        if (! is_dir(storage_path('app/dusk-browser/screenshots'))) {
             $this->createScreenshotsDirectory();
         }
 
-        if (! is_dir(storage_path('app/dusk-scraper/console'))) {
+        if (! is_dir(storage_path('app/dusk-browser/console'))) {
             $this->createConsoleDirectory();
         }
 
@@ -59,9 +59,9 @@ class InstallCommand extends Command
      */
     protected function createScreenshotsDirectory()
     {
-        mkdir(storage_path('app/dusk-scraper/screenshots'), 0755, true);
+        mkdir(storage_path('app/dusk-browser/screenshots'), 0755, true);
 
-        file_put_contents(storage_path('app/dusk-scraper/screenshots/.gitignore'), '*
+        file_put_contents(storage_path('app/dusk-browser/screenshots/.gitignore'), '*
 !.gitignore
 ');
     }
@@ -73,9 +73,9 @@ class InstallCommand extends Command
      */
     protected function createConsoleDirectory()
     {
-        mkdir(storage_path('app/dusk-scraper/console'), 0755, true);
+        mkdir(storage_path('app/dusk-browser/console'), 0755, true);
 
-        file_put_contents(storage_path('app/dusk-scraper/console/.gitignore'), '*
+        file_put_contents(storage_path('app/dusk-browser/console/.gitignore'), '*
 !.gitignore
 ');
     }

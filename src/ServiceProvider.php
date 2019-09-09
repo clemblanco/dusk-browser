@@ -1,6 +1,6 @@
 <?php
 
-namespace DuskScraper;
+namespace DuskBrowser;
 
 use Illuminate\Support\ServiceProvider as IlluminateServiceProvider;
 
@@ -14,7 +14,7 @@ class ServiceProvider extends IlluminateServiceProvider
     public function boot()
     {
         $this->publishes([
-            __DIR__ . '/../config/dusk-scraper.php' => config_path('dusk-scraper.php'),
+            __DIR__ . '/../config/dusk-browser.php' => config_path('dusk-browser.php'),
         ]);
     }
 
@@ -27,11 +27,11 @@ class ServiceProvider extends IlluminateServiceProvider
     public function register()
     {
         $this->mergeConfigFrom(
-            __DIR__ . '/../config/dusk-scraper.php', 'dusk-scraper'
+            __DIR__ . '/../config/dusk-browser.php', 'dusk-browser'
         );
 
-        $this->app->singleton(DuskScraper::class, function () {
-            return new DuskScraper;
+        $this->app->singleton(DuskBrowser::class, function () {
+            return new DuskBrowser;
         });
 
         if ($this->app->runningInConsole()) {

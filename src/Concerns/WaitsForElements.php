@@ -1,6 +1,6 @@
 <?php
 
-namespace DuskScraper\Concerns;
+namespace DuskBrowser\Concerns;
 
 use Closure;
 use Exception;

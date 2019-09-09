@@ -1,9 +1,9 @@
 <?php
 
-namespace DuskScraper\Tests;
+namespace DuskBrowser\Tests;
 
 use PHPUnit\Framework\TestCase;
-use DuskScraper\Chrome\SupportsChrome;
+use DuskBrowser\Chrome\SupportsChrome;
 
 class SupportsChromeTest extends TestCase
 {

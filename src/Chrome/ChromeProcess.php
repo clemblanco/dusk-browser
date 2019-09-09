@@ -1,9 +1,9 @@
 <?php
 
-namespace DuskScraper\Chrome;
+namespace DuskBrowser\Chrome;
 
 use RuntimeException;
-use DuskScraper\OperatingSystem;
+use DuskBrowser\OperatingSystem;
 use Symfony\Component\Process\Process;
 
 class ChromeProcess
@@ -81,7 +81,7 @@ class ChromeProcess
     }
 
     /**
-     * Determine if DuskScraper is running on Windows or Windows Subsystem for Linux.
+     * Determine if DuskBrowser is running on Windows or Windows Subsystem for Linux.
      *
      * @return bool
      */
@@ -91,7 +91,7 @@ class ChromeProcess
     }
 
     /**
-     * Determine if DuskScraper is running on Mac.
+     * Determine if DuskBrowser is running on Mac.
      *
      * @return bool
      */

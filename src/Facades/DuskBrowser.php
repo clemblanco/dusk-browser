@@ -1,20 +1,20 @@
 <?php
 
-namespace DuskScraper\Facades;
+namespace DuskBrowser\Facades;
 
 /**
  * @method static void browse(\Closure $callback)
  * @method static void closeAll()
  *
- * @see \DuskScraper\DuskScraper
+ * @see \DuskBrowser\DuskBrowser
  */
-class DuskScraper extends \Illuminate\Support\Facades\Facade
+class DuskBrowser extends \Illuminate\Support\Facades\Facade
 {
     /**
      * {@inheritDoc}
      */
     protected static function getFacadeAccessor()
     {
-        return \DuskScraper\DuskScraper::class;
+        return \DuskBrowser\DuskBrowser::class;
     }
 }

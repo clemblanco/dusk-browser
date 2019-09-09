@@ -1,8 +1,9 @@
 <?php
 
-namespace DuskScraper;
+namespace DuskBrowser;
 
 use Closure;
+use Exception;
 use BadMethodCallException;
 use Illuminate\Support\Str;
 use Facebook\WebDriver\WebDriverBy;
@@ -10,7 +11,6 @@ use Facebook\WebDriver\WebDriverPoint;
 use Illuminate\Support\Traits\Macroable;
 use Facebook\WebDriver\WebDriverDimension;
 use Facebook\WebDriver\Remote\WebDriverBrowserType;
-use Exception;
 
 class Browser
 {

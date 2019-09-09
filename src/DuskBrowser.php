@@ -1,32 +1,32 @@
 <?php
 
-namespace DuskScraper;
+namespace DuskBrowser;
 
-use DuskScraper\Chrome\SupportsChrome;
-use DuskScraper\Concerns\ProvidesBrowser;
+use DuskBrowser\Chrome\SupportsChrome;
+use DuskBrowser\Concerns\ProvidesBrowser;
 
-class DuskScraper
+class DuskBrowser
 {
     use ProvidesBrowser, SupportsChrome;
 
     /**
-     * DuskScraper constructor. Only called once as we're using a singleton.
+     * DuskBrowser constructor. Only called once as we're using a singleton.
      *
      * @return void
      */
     public function __construct()
     {
-        Browser::$storeScreenshotsAt = storage_path('app/dusk-scraper/screenshots');
+        Browser::$storeScreenshotsAt = storage_path('app/dusk-browser/screenshots');
 
-        Browser::$storeConsoleLogAt = storage_path('app/dusk-scraper/console');
+        Browser::$storeConsoleLogAt = storage_path('app/dusk-browser/console');
 
-        if (config('dusk-scraper.remote_web_driver_url') === 'http://localhost:9515') {
+        if (config('dusk-browser.remote_web_driver_url') === 'http://localhost:9515') {
             static::startChromeDriver();
         }
     }
 
     /**
-     * DuskScraper destructor. Called whenever the application instance gets killed.
+     * DuskBrowser destructor. Called whenever the application instance gets killed.
      *
      * @return void
      */
@@ -46,7 +46,7 @@ class DuskScraper
      */
     protected function driver()
     {
-        $remoteWebDriverClass = config('dusk-scraper.remote_web_driver');
+        $remoteWebDriverClass = config('dusk-browser.remote_web_driver');
 
         $remoteWebDriver = new $remoteWebDriverClass;
 
