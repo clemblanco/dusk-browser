@@ -4,19 +4,25 @@ namespace DuskScraper;
 
 use DuskScraper\Chrome\SupportsChrome;
 use DuskScraper\Concerns\ProvidesBrowser;
-use Facebook\WebDriver\Chrome\ChromeOptions;
-use Facebook\WebDriver\Remote\RemoteWebDriver;
-use Facebook\WebDriver\Remote\DesiredCapabilities;
+use Facebook\WebDriver\Remote\WebDriverBrowserType;
 
 class DuskScraper
 {
     use ProvidesBrowser, SupportsChrome;
 
+    /**
+     * DuskScraper constructor.
+     */
     public function __construct()
     {
-        static::startChromeDriver();
+        if ($this->driver()->getCapabilities()->getBrowserName() === WebDriverBrowserType::CHROME) {
+            static::startChromeDriver();
+        }
     }
 
+    /**
+     * DuskScraper destructor.
+     */
     public function __destruct()
     {
         static::closeAll();
@@ -27,22 +33,14 @@ class DuskScraper
     }
 
     /**
-     * Create the RemoteWebDriver instance.
+     * Create the RemoteWebDriver instance using an invokable class.
      *
      * @return \Facebook\WebDriver\Remote\RemoteWebDriver
      */
     protected function driver()
     {
-        $options = (new ChromeOptions)->addArguments([
-            '--disable-gpu',
-            '--headless',
-            '--window-size=1920,1080',
-        ]);
+        $remoteWebDriver = config('dusk-scraper.remote_web_driver');
 
-        return RemoteWebDriver::create(
-            'http://localhost:9515', DesiredCapabilities::chrome()->setCapability(
-                ChromeOptions::CAPABILITY, $options
-            )
-        );
+        return (new $remoteWebDriver);
     }
 }

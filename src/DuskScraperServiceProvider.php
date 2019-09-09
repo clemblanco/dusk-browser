@@ -13,7 +13,9 @@ class DuskScraperServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        $this->publishes([
+            __DIR__ . '/../config/dusk-scraper.php' => config_path('dusk-scraper.php'),
+        ]);
     }
 
     /**
@@ -24,6 +26,10 @@ class DuskScraperServiceProvider extends ServiceProvider
      */
     public function register()
     {
+        $this->mergeConfigFrom(
+            __DIR__ . '/../config/dusk-scraper.php', 'dusk-scraper'
+        );
+
         $this->app->singleton(DuskScraper::class, function () {
             return new DuskScraper;
         });
