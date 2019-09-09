@@ -1,6 +1,6 @@
 <?php
 
-namespace Laravel\Dusk\Chrome;
+namespace DuskBrowser\Chrome;
 
 trait SupportsChrome
 {
@@ -32,7 +32,7 @@ trait SupportsChrome
 
         static::$chromeProcess->start();
 
-        static::afterClass(function () {
+        static::afterBrowse(function () {
             static::stopChromeDriver();
         });
     }

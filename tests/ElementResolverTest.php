@@ -1,13 +1,13 @@
 <?php
 
-namespace Laravel\Dusk\Tests;
+namespace DuskBrowser\Tests;
 
 use stdClass;
 use Mockery as m;
 use ReflectionClass;
 use InvalidArgumentException;
 use PHPUnit\Framework\TestCase;
-use Laravel\Dusk\ElementResolver;
+use DuskBrowser\ElementResolver;
 
 class ElementResolverTest extends TestCase
 {
@@ -127,20 +127,6 @@ class ElementResolverTest extends TestCase
 
         $resolver = new ElementResolver(new stdClass, 'prefix');
         $this->assertEquals('prefix #modal', $resolver->format('#modal'));
-
-        $resolver = new ElementResolver(new stdClass, 'prefix');
-        $resolver->pageElements(['@modal' => '#modal']);
-        $this->assertEquals('prefix #modal', $resolver->format('@modal'));
-
-        $resolver = new ElementResolver(new stdClass, 'prefix');
-        $resolver->pageElements([
-            '@modal' => '#first',
-            '@modal-second' => '#second',
-        ]);
-        $this->assertEquals('prefix #first', $resolver->format('@modal'));
-        $this->assertEquals('prefix #second', $resolver->format('@modal-second'));
-        $this->assertEquals('prefix #first-third', $resolver->format('@modal-third'));
-        $this->assertEquals('prefix [dusk="missing-element"]', $resolver->format('@missing-element'));
     }
 
     public function test_find_by_id_with_colon()

@@ -1,12 +1,12 @@
 <?php
 
-namespace Laravel\Dusk\Concerns;
+namespace DuskBrowser\Concerns;
 
 use Closure;
 use Exception;
 use Throwable;
 use ReflectionFunction;
-use Laravel\Dusk\Browser;
+use DuskBrowser\Browser;
 use Illuminate\Support\Collection;
 
 trait ProvidesBrowser
@@ -19,43 +19,28 @@ trait ProvidesBrowser
     protected static $browsers = [];
 
     /**
-     * The callbacks that should be run on class tear down.
+     * The callbacks that should be run after browsing.
      *
      * @var array
      */
-    protected static $afterClassCallbacks = [];
+    protected static $afterBrowseCallbacks = [];
 
     /**
-     * Tear down the Dusk test case class.
-     *
-     * @afterClass
-     * @return void
-     */
-    public static function tearDownDuskClass()
-    {
-        static::closeAll();
-
-        foreach (static::$afterClassCallbacks as $callback) {
-            $callback();
-        }
-    }
-
-    /**
-     * Register an "after class" tear down callback.
+     * Register an "after browse" tear down callback.
      *
      * @param  \Closure  $callback
      * @return void
      */
-    public static function afterClass(Closure $callback)
+    public static function afterBrowse(Closure $callback)
     {
-        static::$afterClassCallbacks[] = $callback;
+        static::$afterBrowseCallbacks[] = $callback;
     }
 
     /**
      * Create a new browser instance.
      *
      * @param  \Closure  $callback
-     * @return \Laravel\Dusk\Browser|void
+     * @return \DuskBrowser\Browser|void
      * @throws \Exception
      * @throws \Throwable
      */
@@ -76,7 +61,7 @@ trait ProvidesBrowser
         } finally {
             $this->storeConsoleLogsFor($browsers);
 
-            static::$browsers = $this->closeAllButPrimary($browsers);
+            static::$browsers = $this->closeAll();
         }
     }
 
@@ -106,7 +91,7 @@ trait ProvidesBrowser
      * Create a new Browser instance.
      *
      * @param  \Facebook\WebDriver\Remote\RemoteWebDriver  $driver
-     * @return \Laravel\Dusk\Browser
+     * @return \DuskBrowser\Browser
      */
     protected function newBrowser($driver)
     {
@@ -133,10 +118,11 @@ trait ProvidesBrowser
      */
     protected function captureFailuresFor($browsers)
     {
-        $browsers->each(function ($browser, $key) {
-            $name = str_replace('\\', '_', get_class($this)).'_'.$this->getName(false);
+        $browsers->each(function (Browser $browser, $key) {
+            $host = parse_url($browser->driver->getCurrentURL(), PHP_URL_HOST);
+            $timestamp = date('Y_m_d_His');
 
-            $browser->screenshot('failure-'.$name.'-'.$key);
+            $browser->screenshot("failure-$host-$key-$timestamp");
         });
     }
 
@@ -149,23 +135,11 @@ trait ProvidesBrowser
     protected function storeConsoleLogsFor($browsers)
     {
         $browsers->each(function ($browser, $key) {
-            $name = str_replace('\\', '_', get_class($this)).'_'.$this->getName(false);
+            $host = parse_url($browser->driver->getCurrentURL(), PHP_URL_HOST);
+            $timestamp = date('Y_m_d_His');
 
-            $browser->storeConsoleLog($name.'-'.$key);
+            $browser->storeConsoleLog("$host-$key-$timestamp");
         });
-    }
-
-    /**
-     * Close all of the browsers except the primary (first) one.
-     *
-     * @param  \Illuminate\Support\Collection  $browsers
-     * @return \Illuminate\Support\Collection
-     */
-    protected function closeAllButPrimary($browsers)
-    {
-        $browsers->slice(1)->each->quit();
-
-        return $browsers->take(1);
     }
 
     /**

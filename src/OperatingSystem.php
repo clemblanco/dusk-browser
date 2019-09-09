@@ -1,6 +1,6 @@
 <?php
 
-namespace Laravel\Dusk;
+namespace DuskBrowser;
 
 use Illuminate\Support\Str;
 

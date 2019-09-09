@@ -1,6 +1,6 @@
 <?php
 
-namespace Laravel\Dusk\Concerns;
+namespace DuskBrowser\Concerns;
 
 use DateTimeInterface;
 
