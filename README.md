@@ -54,9 +54,13 @@ Similar to Laravel Dusk, Laravel Dusk Browser comes with Google Chrome browser a
 
 However, you are still free to use any other browser/driver combination by overriding the default invokable class used to resolve the driver to use.
 
-To do so, you will need to publish the config file of the package using `php artisan vendor:publish --provider="DuskBrowser\ServiceProvider"` and specify your own `remote_web_driver` class name.
+To do so, you will need to publish the config file of the package using
 
-Feel free to copy and paste the default class `\DuskBrowser\ChromeRemoteWebDriver` and simply modify the `__invoke()` function to your needs. For a Selenium driver using a phantomjs browser you might see something like:
+```php artisan vendor:publish --provider="DuskBrowser\ServiceProvider"```
+
+and specify your own `remote_web_driver` class name.
+
+Feel free to copy the default class `DuskBrowser\ChromeRemoteWebDriver` over to your own application and simply modify/rename it to your needs, as long as it implements `DuskBrowser\Contracts\RemoteWebDriverContract`. For a Selenium driver using a phantomjs browser you might see something like:
 
 ```php
 /**
