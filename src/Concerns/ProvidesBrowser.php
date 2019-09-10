@@ -118,8 +118,10 @@ trait ProvidesBrowser
      */
     protected function captureFailuresFor($browsers)
     {
-        $browsers->each(function (Browser $browser, $key) {
+        $browsers->each(function ($browser, $key) {
+            /** @var Browser $browser */
             $host = parse_url($browser->driver->getCurrentURL(), PHP_URL_HOST);
+            $host = str_replace('.', '_', $host);
             $timestamp = date('Y_m_d_His');
 
             $browser->screenshot("failure-$host-$key-$timestamp");
@@ -135,7 +137,9 @@ trait ProvidesBrowser
     protected function storeConsoleLogsFor($browsers)
     {
         $browsers->each(function ($browser, $key) {
+            /** @var Browser $browser */
             $host = parse_url($browser->driver->getCurrentURL(), PHP_URL_HOST);
+            $host = str_replace('.', '_', $host);
             $timestamp = date('Y_m_d_His');
 
             $browser->storeConsoleLog("$host-$key-$timestamp");

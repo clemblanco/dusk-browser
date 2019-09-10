@@ -17,8 +17,13 @@ class ProvidesBrowserTest extends TestCase
     public function test_capture_failures_for()
     {
         $browser = m::mock(stdClass::class);
+        $browser->driver = m::mock(stdClass::class)
+            ->shouldReceive('getCurrentURL')
+            ->andReturn('https://www.google.com')
+            ->getMock();
+        $timestamp = date('Y_m_d_His');
         $browser->shouldReceive('screenshot')->with(
-            'failure-DuskBrowser_Tests_ProvidesBrowserTest_test_capture_failures_for-0'
+            "failure-www_google_com-0-$timestamp"
         );
         $browsers = collect([$browser]);
 
@@ -31,8 +36,13 @@ class ProvidesBrowserTest extends TestCase
     public function test_store_console_logs_for()
     {
         $browser = m::mock(stdClass::class);
+        $browser->driver = m::mock(stdClass::class)
+            ->shouldReceive('getCurrentURL')
+            ->andReturn('https://www.google.com')
+            ->getMock();
+        $timestamp = date('Y_m_d_His');
         $browser->shouldReceive('storeConsoleLog')->with(
-            'DuskBrowser_Tests_ProvidesBrowserTest_test_store_console_logs_for-0'
+            "www_google_com-0-$timestamp"
         );
         $browsers = collect([$browser]);
 
