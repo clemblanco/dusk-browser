@@ -8,9 +8,9 @@
 
 Laravel Dusk Browser provides an expressive, easy-to-use browsing API based on [Laravel Dusk 5.0](https://github.com/laravel/dusk/tree/5.0).
 
-Laravel Dusk can be un-secure to run on a production application due to the fact it's tightly coupled to PHPUnit and User Authentication, so this is a lighter version of Laravel Dusk which doesn't interact with any of this.
+This is mainly for people who are only after the browsing capabilities of Laravel Dusk and want to use the same API to browse some remote websites.
 
-This is mainly for people who want to use the same API as Laravel Dusk to browse some remote websites.
+Laravel Dusk can be un-secure to run on a production application due to the fact it's tightly coupled to PHPUnit and User Authentication, so this is a lighter version of Laravel Dusk which doesn't interact with any of this.
 
 ## Usage
 
@@ -25,7 +25,7 @@ DuskBrowser::browse(function ($browser) {
 
 ```composer require dusk-browser/dusk-browser```
 
-Laravel Dusk Browser comes with two commands identical to Laravel Dusk: `dusk-browser:install` and `dusk-browser:chrome-driver`.
+Laravel Dusk Browser comes with two commands, identical to Laravel Dusk: `dusk-browser:install` and `dusk-browser:chrome-driver`.
 
 After installing the package, run the `dusk-browser:install` Artisan command:
 
@@ -76,4 +76,4 @@ Depending on your web driver (Selenium, ChromeDriver...) `remote_web_driver_url`
 
 ## License
 
-Laravel Browser is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+Laravel Dusk Browser is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
