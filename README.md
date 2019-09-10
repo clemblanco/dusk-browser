@@ -8,7 +8,7 @@
 
 Laravel Dusk Browser provides an expressive, easy-to-use browsing API based on [Laravel Dusk 5.0](https://github.com/laravel/dusk/tree/5.0).
 
-This is mainly for people who are only after the browsing capabilities of Laravel Dusk and want to use the same API to browse some remote websites.
+This is mainly for people who are only after the browsing capabilities of Laravel Dusk and want to use the same API to browse some remote websites. This could be useful for some crawling capabilities running on a background job for example. 
 
 Laravel Dusk can be un-secure to run on a production application due to the fact it's tightly coupled to PHPUnit and User Authentication, so this is a lighter version of Laravel Dusk which doesn't interact with any of this.
 
