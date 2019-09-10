@@ -5,12 +5,12 @@
     "license": "MIT",
     "authors": [
         {
-            "name": "Taylor Otwell",
-            "email": "taylor@laravel.com"
-        },
-        {
             "name": "Clément Blanco",
             "email": "mail@clem.io"
+        },
+        {
+            "name": "Taylor Otwell",
+            "email": "taylor@laravel.com"
         }
     ],
     "require": {
