@@ -1,7 +1,10 @@
 # Laravel Dusk Browser
 
 <p align="center">
-<a href="https://packagist.org/packages/clemblanco/dusk-browser"><img src="https://poser.pugx.org/laravel/dusk/license.svg" alt="License"></a>
+<a href="https://travis-ci.org/dusk-browser/dusk-browser"><img src="https://travis-ci.org/dusk-browser/dusk-browser.svg" alt="Build Status"></a>
+<a href="https://packagist.org/packages/dusk-browser/dusk-browser"><img src="https://poser.pugx.org/dusk-browser/dusk-browser/d/total.svg" alt="Total Downloads"></a>
+<a href="https://packagist.org/packages/dusk-browser/dusk-browser"><img src="https://poser.pugx.org/dusk-browser/dusk-browser/v/stable.svg" alt="Latest Stable Version"></a>
+<a href="https://packagist.org/packages/dusk-browser/dusk-browser"><img src="https://poser.pugx.org/dusk-browser/dusk-browser/license.svg" alt="License"></a>
 </p>
 
 ## Introduction
