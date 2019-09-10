@@ -37,7 +37,7 @@ before_install:
   - phpenv config-rm xdebug.ini || true
 
 install:
-  - travis_retry composer require "illuminate/contracts=${LARAVEL}" "phpunit/phpunit:${PHPUNIT}" --dev --prefer-dist --no-interaction --no-suggest
+  - travis_retry composer require "illuminate/contracts=${LARAVEL}" "phpunit/phpunit:${PHPUNIT}" --dev --prefer-dist --no-interaction --no-suggest -vvv
 
 before_script:
   - sudo sh -c 'echo 0 > /proc/sys/net/ipv6/conf/all/disable_ipv6'
