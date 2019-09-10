@@ -11,7 +11,7 @@ namespace DuskBrowser\Facades;
 class DuskBrowser extends \Illuminate\Support\Facades\Facade
 {
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     protected static function getFacadeAccessor()
     {

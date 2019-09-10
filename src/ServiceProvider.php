@@ -14,7 +14,7 @@ class ServiceProvider extends IlluminateServiceProvider
     public function boot()
     {
         $this->publishes([
-            __DIR__ . '/../config/dusk-browser.php' => config_path('dusk-browser.php'),
+            __DIR__.'/../config/dusk-browser.php' => config_path('dusk-browser.php'),
         ]);
     }
 
@@ -27,7 +27,7 @@ class ServiceProvider extends IlluminateServiceProvider
     public function register()
     {
         $this->mergeConfigFrom(
-            __DIR__ . '/../config/dusk-browser.php', 'dusk-browser'
+            __DIR__.'/../config/dusk-browser.php', 'dusk-browser'
         );
 
         $this->app->singleton(DuskBrowser::class, function () {
