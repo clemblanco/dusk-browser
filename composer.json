@@ -1,6 +1,6 @@
 {
     "name": "dusk-browser/dusk-browser",
-    "description": "Laravel Dusk Browser is Laravel Dusk for scrapping only.",
+    "description": "Laravel Dusk Browser is Laravel Dusk for browsing capabilities only.",
     "keywords": ["laravel", "browser", "scraper", "crawler", "webdriver"],
     "license": "MIT",
     "authors": [
