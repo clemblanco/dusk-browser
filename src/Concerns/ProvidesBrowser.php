@@ -61,7 +61,7 @@ trait ProvidesBrowser
         } finally {
             $this->storeConsoleLogsFor($browsers);
 
-            static::$browsers = $this->closeAll();
+            static::$browsers = $this->closeAllButPrimary($browsers);
         }
     }
 
@@ -144,6 +144,19 @@ trait ProvidesBrowser
 
             $browser->storeConsoleLog("$host-$key-$timestamp");
         });
+    }
+
+    /**
+     * Close all of the browsers except the primary (first) one.
+     *
+     * @param  \Illuminate\Support\Collection  $browsers
+     * @return \Illuminate\Support\Collection
+     */
+    protected function closeAllButPrimary($browsers)
+    {
+        $browsers->slice(1)->each->quit();
+        
+        return $browsers->take(1);
     }
 
     /**
