@@ -155,7 +155,7 @@ trait ProvidesBrowser
     protected function closeAllButPrimary($browsers)
     {
         $browsers->slice(1)->each->quit();
-        
+
         return $browsers->take(1);
     }
 
