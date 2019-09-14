@@ -93,7 +93,7 @@ class Browser
     public function visit($url)
     {
         if (! Str::startsWith($url, ['http://', 'https://'])) {
-            throw new Exception("URL should start with http:// or https://");
+            throw new Exception('URL should start with http:// or https://');
         }
 
         $this->driver->navigate()->to($url);

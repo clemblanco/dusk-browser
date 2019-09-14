@@ -4,8 +4,8 @@ namespace DuskBrowser;
 
 use Facebook\WebDriver\Chrome\ChromeOptions;
 use Facebook\WebDriver\Remote\RemoteWebDriver;
-use Facebook\WebDriver\Remote\DesiredCapabilities;
 use DuskBrowser\Contracts\RemoteWebDriverContract;
+use Facebook\WebDriver\Remote\DesiredCapabilities;
 
 class ChromeRemoteWebDriver implements RemoteWebDriverContract
 {
