@@ -10,31 +10,19 @@ class DuskBrowser
     use ProvidesBrowser, SupportsChrome;
 
     /**
-     * DuskBrowser constructor. Only called once as we're using a singleton.
+     * Before the browsing session happens.
      *
      * @return void
      */
-    public function __construct()
+    protected function beforeBrowse()
     {
         Browser::$storeScreenshotsAt = storage_path('app/dusk-browser/screenshots');
 
         Browser::$storeConsoleLogAt = storage_path('app/dusk-browser/console');
 
-        static::beforeBrowse(function () {
-            if (config('dusk-browser.remote_web_driver_url') === 'http://localhost:9515') {
-                static::startChromeDriver();
-            }
-        });
-    }
-
-    /**
-     * DuskBrowser destructor. Called whenever the application instance gets killed.
-     *
-     * @return void
-     */
-    public function __destruct()
-    {
-        static::closeAll();
+        if (config('dusk-browser.remote_web_driver_url') === 'http://localhost:9515') {
+            static::startChromeDriver();
+        }
     }
 
     /**

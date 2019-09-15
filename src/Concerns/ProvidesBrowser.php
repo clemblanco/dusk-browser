@@ -19,29 +19,11 @@ trait ProvidesBrowser
     protected static $browsers = [];
 
     /**
-     * The callbacks that should be run before browsing.
-     *
-     * @var array
-     */
-    protected static $beforeBrowseCallbacks = [];
-
-    /**
      * The callbacks that should be run after browsing.
      *
      * @var array
      */
     protected static $afterBrowseCallbacks = [];
-
-    /**
-     * Register an "before browse" tear down callback.
-     *
-     * @param  \Closure  $callback
-     * @return void
-     */
-    public static function beforeBrowse(Closure $callback)
-    {
-        static::$beforeBrowseCallbacks[] = $callback;
-    }
 
     /**
      * Register an "after browse" tear down callback.
@@ -64,9 +46,7 @@ trait ProvidesBrowser
      */
     public function browse(Closure $callback)
     {
-        foreach (static::$beforeBrowseCallbacks as $callback) {
-            $callback();
-        }
+        $this->beforeBrowse();
 
         $browsers = $this->createBrowsersFor($callback);
 
@@ -82,10 +62,6 @@ trait ProvidesBrowser
             throw $e;
         } finally {
             $this->storeConsoleLogsFor($browsers);
-
-            foreach (static::$afterBrowseCallbacks as $callback) {
-                $callback();
-            }
 
             $this->closeAll();
         }
@@ -200,6 +176,13 @@ trait ProvidesBrowser
             return $this->driver();
         }, 50);
     }
+
+    /**
+     * Before the browsing session happens.
+     *
+     * @return void
+     */
+    abstract protected function beforeBrowse();
 
     /**
      * Create the RemoteWebDriver instance.
