@@ -20,9 +20,11 @@ class DuskBrowser
 
         Browser::$storeConsoleLogAt = storage_path('app/dusk-browser/console');
 
-        if (config('dusk-browser.remote_web_driver_url') === 'http://localhost:9515') {
-            static::startChromeDriver();
-        }
+        static::beforeBrowse(function () {
+            if (config('dusk-browser.remote_web_driver_url') === 'http://localhost:9515') {
+                static::startChromeDriver();
+            }
+        });
     }
 
     /**
@@ -33,10 +35,6 @@ class DuskBrowser
     public function __destruct()
     {
         static::closeAll();
-
-        foreach (static::$afterBrowseCallbacks as $callback) {
-            $callback();
-        }
     }
 
     /**
