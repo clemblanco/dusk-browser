@@ -4,7 +4,7 @@ namespace DuskBrowser\Facades;
 
 /**
  * @method static void browse(\Closure $callback)
- * @method static void closeAll()
+ * @method static void quit()
  *
  * @see \DuskBrowser\DuskBrowser
  */

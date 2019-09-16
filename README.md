@@ -22,6 +22,8 @@ DuskBrowser::browse(function ($browser) {
     $altTextLogo = $browser->visit('https://www.google.com')
         ->attribute('#hplogo', 'alt');
 });
+// You can make other calls using DuskBrowser::browse()...
+DuskBrowser::quit(); // **mandatory** so Dusk Browser cleans up processes behind him
 ```
 
 ## Installation 
@@ -36,7 +38,7 @@ After installing the package, run the `dusk-browser:install` Artisan command:
 
 A `dusk-browser` directory will be created within your `storage/app` directory. Similar to Laravel Dusk, some screenshots and console logs of failed browsing sessions will be captured there.
 
-For managing ChromeDriver installations, you can refer to the official [Laravel Dusk documentation](https://laravel.com/docs/5.8/dusk#managing-chromedriver-installations).
+For managing ChromeDriver installations, you can refer to the official [Laravel Dusk documentation](https://laravel.com/docs/5.8/dusk#managing-chromedriver-installations). This package comes with the Chrome Driver binaries for Chrome 76. 
 
 ## Documentation
 

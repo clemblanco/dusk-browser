@@ -26,6 +26,20 @@ trait ProvidesBrowser
     protected static $afterBrowseCallbacks = [];
 
     /**
+     * Tear down and cleanup post browsing.
+     *
+     * @return void
+     */
+    public static function quit()
+    {
+        static::closeAll();
+
+        foreach (static::$afterBrowseCallbacks as $callback) {
+            $callback();
+        }
+    }
+
+    /**
      * Register an "after browse" tear down callback.
      *
      * @param  \Closure  $callback
@@ -46,7 +60,7 @@ trait ProvidesBrowser
      */
     public function browse(Closure $callback)
     {
-        $this->beforeBrowse();
+        $this->prepare();
 
         $browsers = $this->createBrowsersFor($callback);
 
@@ -63,7 +77,7 @@ trait ProvidesBrowser
         } finally {
             $this->storeConsoleLogsFor($browsers);
 
-            $this->closeAll();
+            static::$browsers = $this->closeAllButPrimary($browsers);
         }
     }
 
@@ -149,6 +163,19 @@ trait ProvidesBrowser
     }
 
     /**
+     * Close all of the browsers except the primary (first) one.
+     *
+     * @param  \Illuminate\Support\Collection  $browsers
+     * @return \Illuminate\Support\Collection
+     */
+    protected function closeAllButPrimary($browsers)
+    {
+        $browsers->slice(1)->each->quit();
+
+        return $browsers->take(1);
+    }
+
+    /**
      * Close all of the active browsers and execute any additional post-browsing callback.
      *
      * @return void
@@ -158,10 +185,6 @@ trait ProvidesBrowser
         Collection::make(static::$browsers)->each->quit();
 
         static::$browsers = collect();
-
-        foreach (static::$afterBrowseCallbacks as $callback) {
-            $callback();
-        }
     }
 
     /**
@@ -182,7 +205,7 @@ trait ProvidesBrowser
      *
      * @return void
      */
-    abstract protected function beforeBrowse();
+    abstract protected function prepare();
 
     /**
      * Create the RemoteWebDriver instance.

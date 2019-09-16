@@ -3,18 +3,18 @@
 namespace DuskBrowser;
 
 use DuskBrowser\Chrome\SupportsChrome;
-use DuskBrowser\Concerns\ProvidesBrowser;
 
 class DuskBrowser
 {
-    use ProvidesBrowser, SupportsChrome;
+    use Concerns\ProvidesBrowser,
+        SupportsChrome;
 
     /**
      * Before the browsing session happens.
      *
      * @return void
      */
-    protected function beforeBrowse()
+    protected function prepare()
     {
         Browser::$storeScreenshotsAt = storage_path('app/dusk-browser/screenshots');
 
