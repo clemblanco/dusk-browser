@@ -63,4 +63,14 @@ class ProvidesBrowserTest extends TestCase
     {
         //
     }
+
+    /**
+     * Before the browsing session happens.
+     *
+     * @return void
+     */
+    protected function prepare()
+    {
+        //
+    }
 }
