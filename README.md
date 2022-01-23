@@ -1,4 +1,4 @@
-# Laravel Dusk Browser
+# Laravel Dusk Browser - Experimental
 
 <p align="center">
 <a href="https://travis-ci.org/clemblanco/dusk-browser"><img src="https://travis-ci.org/clemblanco/dusk-browser.svg" alt="Build Status"></a>
